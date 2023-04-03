@@ -4,3 +4,4 @@ pub mod roman_to_int;
 pub mod longest_common_prefix;
 pub mod three_sum;
 pub mod letter_combinations;
+pub mod valid_parentheses;
