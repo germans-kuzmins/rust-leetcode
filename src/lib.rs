@@ -7,3 +7,4 @@ pub mod letter_combinations;
 pub mod valid_parentheses;
 pub mod remove_nth_from_end;
 pub mod list_node;
+pub mod merge_two_lists;
