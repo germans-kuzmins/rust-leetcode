@@ -43,7 +43,7 @@ pub fn merge_two_lists_itterative(
                 tail = tail.next.as_mut().unwrap();
             }
             tail.next = if left.is_some() {left} else {right};
-            return head.next;
+            return head.next;   
         }
         (true, false) => return list1,
         (false, true) => return list2,
