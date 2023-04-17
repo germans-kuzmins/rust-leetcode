@@ -1,4 +1,4 @@
-use std::{collections::VecDeque, fmt::format};
+use std::{collections::VecDeque};
 
 pub fn letter_combinations(digits: String) -> Vec<String> {
     if digits.len() == 0 {
