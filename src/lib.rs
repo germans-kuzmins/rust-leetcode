@@ -11,3 +11,5 @@ pub mod merge_two_lists;
 pub mod generate_parenthesis;
 pub mod merge_k_lists;
 pub mod contains_duplicate;
+pub mod is_anagram;
+pub mod two_sum;
