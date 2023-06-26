@@ -1,19 +1,20 @@
 use std::collections::HashMap;
 
 impl Solution {
-    pub fn group_anagrams(strs: Vec<String>) -> Vec<Vec<String>> {
-        let mut hasMap: HashMap<[u8; 26], Vec<String>> = HashMap::new();
-        for s in strs {
-            let mut key = [0 as u8; 26];
-            for c in s.chars() {
-                key[c as usize - 'a' as usize] += 1;
-            }
-            if let Some(existing_key) = hasMap.get_mut(&key) {
-                existing_key.push(s);
-            } else {
-                hasMap.insert(key, vec![s]);
-            }
+    pub fn top_k_frequent(nums: Vec<i32>, k: i32) -> Vec<i32> {
+        let mut map: HashMap<i32, i32> = HashMap::new();
+
+        for i in nums {
+            *map.entry(i).or_insert(0) += 1;
         }
-        return hasMap.into_values().collect();
+
+
+        // Convert the HashMap into a Vec of tuples
+        let mut map_vec: Vec<(i32, i32)> = map.into_iter().collect();
+
+        // Sort the Vec by the second element of each tuple (the value)
+        map_vec.sort_by(|a, b| b.1.cmp(&a.1));
+
+        return map_vec.iter().map(|&x| x.0).take(k as usize).collect();
     }
 }
