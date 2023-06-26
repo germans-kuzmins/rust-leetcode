@@ -13,8 +13,7 @@ pub fn contains_duplicate(nums: Vec<i32>) -> bool {
 
 #[cfg(test)]
 mod tests {
-    // Note this useful idiom: importing names from outer (for mod tests) scope.
-    use super::*;
+    use super::contains_duplicate;
 
     #[test]
     fn case1() {

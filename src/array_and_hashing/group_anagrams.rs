@@ -1,23 +1,23 @@
 use std::collections::HashMap;
 
 pub fn group_anagrams(strs: Vec<String>) -> Vec<Vec<String>> {
-    let mut hasMap: HashMap<[u8; 26], Vec<String>> = HashMap::new();
+    let mut hash_map: HashMap<[u8; 26], Vec<String>> = HashMap::new();
     for s in strs {
         let mut key = [0 as u8; 26];
         for c in s.chars() {
             key[c as usize - 'a' as usize] +=1;
         }
-        if let Some(existing_key) = hasMap.get_mut(&key) {
+        if let Some(existing_key) = hash_map.get_mut(&key) {
             existing_key.push(s);
         } else {
-            hasMap.insert(key, vec![s]);
+            hash_map.insert(key, vec![s]);
         }
     }
-    return hasMap.into_values().collect();
+    return hash_map.into_values().collect();
 }
 
 mod tests {
-    use super::*;
+    use super::group_anagrams;
 
     #[test]
     fn case1() {
@@ -56,6 +56,7 @@ mod tests {
         assert_eq!(grouped_anagrams, expected);
     }
 
+    #[test]
     fn case3() {
         // Given:
         let anagrams: Vec<String> = vec!["a".to_owned()];

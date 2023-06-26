@@ -39,8 +39,7 @@ pub fn longest_palindrome(s: String) -> String {
 
 #[cfg(test)]
 mod tests {
-    // Note this useful idiom: importing names from outer (for mod tests) scope.
-    use super::*;
+    use super::longest_palindrome;
 
     #[test]
     fn example1() {

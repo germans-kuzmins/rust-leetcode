@@ -10,8 +10,13 @@ pub mod list_node;
 pub mod merge_two_lists;
 pub mod generate_parenthesis;
 pub mod merge_k_lists;
-pub mod contains_duplicate;
-pub mod is_anagram;
-pub mod two_sum;
-pub mod group_anagrams;
-pub mod top_k_frequent;
+
+
+mod array_and_hashing {
+    mod is_anagram;
+    mod two_sum;
+    mod contains_duplicate;
+    mod group_anagrams;
+    mod top_k_frequent;
+}
+
