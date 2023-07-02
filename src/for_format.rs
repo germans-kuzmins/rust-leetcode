@@ -1,20 +1,24 @@
-use std::collections::HashMap;
+use std::collections::HashSet;
 
 impl Solution {
-    pub fn product_except_self(nums: Vec<i32>) -> Vec<i32> {
-        let mut result = vec![1; nums.len()];
-        let mut prefix = 1;
+    pub fn longest_consecutive(nums: Vec<i32>) -> i32 {
+        let hash_set: HashSet<i32> = nums.into_iter().collect();
+        let mut max_size = 0;
+        for i in hash_set.iter() {
+            let prev = *i - 1;
+            if !hash_set.contains(&prev) {
+                let mut curr_seq_size = 1;
+                let mut next = i + 1;
 
-        for i in 0..nums.len() {
-            result[i] = prefix;
-            prefix = prefix * nums[i];
+                while hash_set.contains(&next) {
+                    curr_seq_size += 1;
+                    next += 1;
+                }
+                if max_size < curr_seq_size {
+                    max_size = curr_seq_size;
+                }
+            }
         }
-        let mut postfix = 1;
-        for i in (0..nums.len()).rev() {
-            result[i] = postfix * result[i];
-            postfix = postfix * nums[i];
-        }
-
-        return result;
+        return max_size;
     }
 }
