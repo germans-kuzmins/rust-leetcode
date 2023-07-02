@@ -1,20 +1,20 @@
 use std::collections::HashMap;
 
 impl Solution {
-    pub fn top_k_frequent(nums: Vec<i32>, k: i32) -> Vec<i32> {
-        let mut map: HashMap<i32, i32> = HashMap::new();
+    pub fn product_except_self(nums: Vec<i32>) -> Vec<i32> {
+        let mut result = vec![1; nums.len()];
+        let mut prefix = 1;
 
-        for i in nums {
-            *map.entry(i).or_insert(0) += 1;
+        for i in 0..nums.len() {
+            result[i] = prefix;
+            prefix = prefix * nums[i];
+        }
+        let mut postfix = 1;
+        for i in (0..nums.len()).rev() {
+            result[i] = postfix * result[i];
+            postfix = postfix * nums[i];
         }
 
-
-        // Convert the HashMap into a Vec of tuples
-        let mut map_vec: Vec<(i32, i32)> = map.into_iter().collect();
-
-        // Sort the Vec by the second element of each tuple (the value)
-        map_vec.sort_by(|a, b| b.1.cmp(&a.1));
-
-        return map_vec.iter().map(|&x| x.0).take(k as usize).collect();
+        return result;
     }
 }
