@@ -11,4 +11,5 @@ pub mod generate_parenthesis;
 pub mod merge_k_lists;
 mod array_and_hashing;
 mod stack;
+pub mod macros;
 
