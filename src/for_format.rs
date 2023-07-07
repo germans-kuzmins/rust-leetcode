@@ -1,27 +1,20 @@
 use std::collections::HashSet;
 
 impl Solution {
-    pub fn eval_rpn(tokens: Vec<String>) -> i32 {
-        let mut stack = vec![];
-        for token in tokens {
-            if token == "+" || token == "-" || token == "*" || token == "/" {
-                let operand2 = stack.pop().unwrap();
-                let operand1 = stack.pop().unwrap();
-
-                let result = match token.as_ref() {
-                    "+" => operand1 + operand2,
-                    "-" => operand1 - operand2,
-                    "*" => operand1 * operand2,
-                    "/" => operand1 / operand2,
-                    _ => panic!("Invalid token: {}", token),
-                };
-
-                stack.push(result);
-            } else {
-                stack.push(token.parse().unwrap());
+    pub fn daily_temperatures(temperatures: Vec<i32>) -> Vec<i32> {
+        let mut result = vec![0; temperatures.len()];
+        let mut stack: Vec<(i32, usize)> = vec![];
+        for (i, v) in temperatures.into_iter().enumerate() {
+            while let Some((last_temp, _)) = stack.last() {
+                if *last_temp >= v {
+                    break;
+                }
+                let (_, prev_index) = stack.pop().unwrap();
+                result[prev_index] = i as i32 - prev_index as i32;
             }
-        }
 
-        stack.pop().unwrap()
+            stack.push((v, i));
+        }
+        return result;
     }
 }
