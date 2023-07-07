@@ -1,20 +1,23 @@
 use std::collections::HashSet;
 
 impl Solution {
-    pub fn daily_temperatures(temperatures: Vec<i32>) -> Vec<i32> {
-        let mut result = vec![0; temperatures.len()];
-        let mut stack: Vec<(i32, usize)> = vec![];
-        for (i, v) in temperatures.into_iter().enumerate() {
-            while let Some((last_temp, _)) = stack.last() {
-                if *last_temp >= v {
-                    break;
+    pub fn car_fleet(target: i32, position: Vec<i32>, speed: Vec<i32>) -> i32 {
+        let mut zipped: Vec<(i32, i32)> = position.into_iter().zip(speed.into_iter()).collect();
+        zipped.sort_by_key(|&(key, _)| std::cmp::Reverse(key));
+        let mut stack: Vec<(i32, i32)> = vec![];
+        for car in zipped {
+            let arrive_time = (target - car.0) as f32 / car.1 as f32;
+    
+            if let Some(prev_car) = stack.last() {
+                let prev_car_arrive_time = (target - prev_car.0) as f32 / prev_car.1 as f32;
+                if arrive_time > prev_car_arrive_time {
+                    stack.push(car);
                 }
-                let (_, prev_index) = stack.pop().unwrap();
-                result[prev_index] = i as i32 - prev_index as i32;
+            } else {
+                stack.push(car)
             }
-
-            stack.push((v, i));
         }
-        return result;
+    
+        return stack.len() as i32;
     }
 }
