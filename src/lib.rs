@@ -7,7 +7,6 @@ pub mod letter_combinations;
 pub mod remove_nth_from_end;
 pub mod list_node;
 pub mod merge_two_lists;
-pub mod generate_parenthesis;
 pub mod merge_k_lists;
 mod array_and_hashing;
 mod stack;
