@@ -4,3 +4,4 @@ mod eval_rpn;
 mod generate_parenthesis;
 mod daily_temperatures;
 mod car_fleet;
+mod largest_rectangle_area;

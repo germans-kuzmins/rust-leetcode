@@ -10,5 +10,6 @@ pub mod merge_two_lists;
 pub mod merge_k_lists;
 mod array_and_hashing;
 mod stack;
+mod two_pointers;
 pub mod macros;
 
