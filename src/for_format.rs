@@ -6,27 +6,18 @@ struct Rect {
 }
 
 impl Solution {
-    pub fn is_palindrome(s: String) -> bool {
-        let filtered: Vec<char> = s
-            .chars()
-            .filter(|c| c.is_alphanumeric())
-            .map(|c| c.to_ascii_lowercase())
-            .collect();
-        if filtered.is_empty() {
-            return true;
-        }
-
+    pub fn two_sum(numbers: Vec<i32>, target: i32) -> Vec<i32> {
         let mut left = 0;
-        let mut right = filtered.len() - 1;
+        let mut right = numbers.len() - 1;
+        while left < right {
+            let sum = &numbers[left] + &numbers[right];
 
-        while left != right {
-            if filtered[left] != filtered[right] {
-                return false;
+            match sum.cmp(&target) {
+                std::cmp::Ordering::Equal => return vec![(left + 1) as i32, (right + 1) as i32],
+                std::cmp::Ordering::Less => left += 1,
+                std::cmp::Ordering::Greater => right -= 1,
             }
-            left += 1;
-            right -= 1;
         }
-
-        true
+        return vec![];
     }
 }

@@ -2,7 +2,7 @@ pub fn max_area(height: Vec<i32>) -> i32 {
     let mut i = 0;
     let mut j = height.len() - 1;
     let mut max_area = 0;
-    while i != j {
+    while i < j {
         let left = height[i];
         let right = height[j];
         let min = left.min(right);
@@ -17,7 +17,6 @@ pub fn max_area(height: Vec<i32>) -> i32 {
     return max_area;
 }
 
-#[cfg(test)]
 mod tests {
     // Note this useful idiom: importing names from outer (for mod tests) scope.
     use super::*;
