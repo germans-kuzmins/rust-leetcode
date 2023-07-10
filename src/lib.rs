@@ -10,4 +10,5 @@ mod array_and_hashing;
 mod stack;
 mod two_pointers;
 pub mod macros;
+mod contest;
 
