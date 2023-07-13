@@ -11,4 +11,5 @@ mod stack;
 mod two_pointers;
 pub mod macros;
 mod contest;
+mod binary_search;
 
