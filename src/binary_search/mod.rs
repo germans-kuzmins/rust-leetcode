@@ -1,1 +1,1 @@
-mod search_simple;
+mod simple_search;
