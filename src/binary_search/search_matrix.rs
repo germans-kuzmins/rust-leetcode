@@ -8,7 +8,7 @@ pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
     let mut left = 0;
     let mut right = (rows * cols);
 
-    while left < right {
+    while left <= right {
         let m = left + (right - left) / 2;
         let value = matrix[m / cols][m % cols];
         match target.cmp(&value) {
