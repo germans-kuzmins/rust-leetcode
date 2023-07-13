@@ -39,4 +39,17 @@ mod test {
         // Then:
         assert_eq!(result, -1);
     }
+
+    #[test]
+    fn case3() {
+        // Given:
+        let nums = vec![-1];
+        let target = -1;
+
+        // When:
+        let result = super::search(nums, target);
+
+        // Then:
+        assert_eq!(result, 0);
+    }
 }
